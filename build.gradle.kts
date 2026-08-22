@@ -144,6 +144,8 @@ if (modstitch.isModDevGradleRegular)
     loader = "neoforge"
 
 var svc_version = "";
+var emf_version = "";
+var etf_version = "";
 if (modstitch.isLoom) {
     svc_version = when (property("deps.minecraft")) {
         "1.20.1" -> "UiVFkKer"
@@ -151,11 +153,35 @@ if (modstitch.isLoom) {
         "1.21.4" -> "B0SmLrhu"
         else -> throw IllegalArgumentException("Please store the fabric svc version for ${property("deps.minecraft")} in build.gradle.kts!");
     }
+    emf_version = when (property("deps.minecraft")) {
+        "1.20.1" -> "HLnLv1St"
+        "1.21.1" -> "NLDNY8vg"
+        "1.21.4" -> "egL7U2Fa"
+        else -> throw IllegalArgumentException("Please store the fabric EMF version for ${property("deps.minecraft")} in build.gradle.kts!");
+    }
+    etf_version = when (property("deps.minecraft")) {
+        "1.20.1" -> "v0btz5GE"
+        "1.21.1" -> "udcdeUXw"
+        "1.21.4" -> "sXFmuZiZ"
+        else -> throw IllegalArgumentException("Please store the fabric ETF version for ${property("deps.minecraft")} in build.gradle.kts!");
+    }
 } else {
     svc_version = when (property("deps.minecraft")) {
         "1.21.1" -> "8xOu3Um5"
         "1.21.4" -> "5ERpmU4w"
         else -> throw IllegalArgumentException("Please store the neoforge svc version for ${property("deps.minecraft")} in build.gradle.kts!");
+    }
+    emf_version = when (property("deps.minecraft")) {
+        "1.20.1" -> "lssOUOiA"
+        "1.21.1" -> "PAYgk63v"
+        "1.21.4" -> "mSdGwbUW"
+        else -> throw IllegalArgumentException("Please store the neoforge EMF version for ${property("deps.minecraft")} in build.gradle.kts!");
+    }
+    etf_version = when (property("deps.minecraft")) {
+        "1.20.1" -> "GQlTHleX"
+        "1.21.1" -> "YEMROAHv"
+        "1.21.4" -> "prVeAFlr"
+        else -> throw IllegalArgumentException("Please store the neoforge ETF version for ${property("deps.minecraft")} in build.gradle.kts!");
     }
 }
 
@@ -170,6 +196,9 @@ dependencies {
     // svc
     modstitchModImplementation("maven.modrinth:9eGKb6K1:${svc_version}")
     modstitchModImplementation("de.maxhenkel.voicechat:voicechat-api:${voicechat_api_version}")
+    // etf & emf, etf is hard dep. so build first in case
+    modstitchModImplementation("maven.modrinth:BVzZfTc1:${etf_version}")
+    modstitchModImplementation("maven.modrinth:4I1XuqiY:${emf_version}")
 
 
 //    modstitchCompileOnly(figura("common-mojmap"))

@@ -16,7 +16,9 @@ import java.util.Map;
 public class SillyCompatsAPI {
     private static final Map<String, SillyCompatDefinition> compats = new HashMap<>() {{
        put("voicechat", new SillyCompatDefinition("voicechat", "svc", "dev.celestial.silly.lua.compat.VoicechatCompatAPI"));
+       put("entity_model_features", new SillyCompatDefinition("entity_model_features", "emf", "dev.celestial.silly.lua.compat.EMFCompatAPI"));
     }};
+
     private final Avatar avatar;
     private final FiguraLuaRuntime runtime;
     private final Map<String, BaseCompatAPI> instances = new HashMap<>();
