@@ -80,14 +80,12 @@ import org.jetbrains.annotations.Nullable;
 import org.luaj.vm2.*;
 import org.luaj.vm2.ast.Chunk;
 import org.luaj.vm2.ast.NameResolver;
-import org.luaj.vm2.ast.Variable;
 import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.parser.LuaParser;
 
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
@@ -671,17 +669,13 @@ public class SillyAPI {
     }
 
     @LuaWhitelist
-    @LuaMethodDoc(
-            value = "silly.get_ping"
-    )
+    @LuaMethodDoc("silly.get_ping")
     public Integer getPing() {
         return Math.toIntExact((Objects.requireNonNull(minecraft.getCurrentServer()).ping));
     }
 
     @LuaWhitelist
-    @LuaMethodDoc(
-            value = "silly.get_server_data"
-    )
+    @LuaMethodDoc("silly.get_server_data")
     public LuaTable getServerData() {
         LuaTable ret = new LuaTable();
 
@@ -692,15 +686,9 @@ public class SillyAPI {
             ret.set("ip", cur.ip);
             ret.set("ping", (int) cur.ping);
             ret.set("name", cur.name);
-            ret.set("type", switch (cur.type()) {
-                case LAN -> "LAN";
-                case REALM -> "REALM";
-                case OTHER -> "OTHER";
-            });
         } else {
             ret = null;
         }
-
         return ret;
     }
 
