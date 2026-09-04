@@ -80,6 +80,7 @@ import org.jetbrains.annotations.Nullable;
 import org.luaj.vm2.*;
 import org.luaj.vm2.ast.Chunk;
 import org.luaj.vm2.ast.NameResolver;
+import org.luaj.vm2.ast.Variable;
 import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.parser.LuaParser;
 
@@ -667,6 +668,40 @@ public class SillyAPI {
             throw new LuaError("Dear god, this is way too much bumpscocity! (1000 max)");
         }
         return value;
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(
+            value = "silly.get_ping"
+    )
+    public Integer getPing() {
+        return Math.toIntExact((Objects.requireNonNull(minecraft.getCurrentServer()).ping));
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(
+            value = "silly.get_server_data"
+    )
+    public LuaTable getServerData() {
+        LuaTable ret = new LuaTable();
+
+        if (minecraft.getCurrentServer() != null) {
+            ServerData cur = minecraft.getCurrentServer();
+
+            // compile in all of the server dat inside yo
+            ret.set("ip", cur.ip);
+            ret.set("ping", (int) cur.ping);
+            ret.set("name", cur.name);
+            ret.set("type", switch (cur.type()) {
+                case LAN -> "LAN";
+                case REALM -> "REALM";
+                case OTHER -> "OTHER";
+            });
+        } else {
+            ret = null;
+        }
+
+        return ret;
     }
 
     @LuaWhitelist

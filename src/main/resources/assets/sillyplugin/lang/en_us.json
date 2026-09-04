@@ -14,6 +14,8 @@
     "figura.docs.silly.get_avatar_nameplate": "Returns the nameplates of another avatar.",
     "figura.docs.silly.cat": "Sends meow in chat, because half of figura are cats in disguise.",
     "figura.docs.silly.get_bumpscocity": "Gets the current bumpscocity.",
+    "figura.docs.silly.get_ping": "Returns the current ping of the server.",
+    "figura.docs.silly.get_server_data": "Returns parts of the current server data in a table.",
     "figura.docs.silly.what_does_bumpscocity_do": "Tells you what bumpscocity does.",
     "figura.docs.silly.set_block": "Sets a fake block in the world.\nSetting a block to nil removes the fake one.\nRequires cheats (but runs on clients!)",
     "figura.docs.silly.get_block_entity": "Gets the serverside NBT of a block in the world.\nReturns nil if the block isnt a block entity.\nRequires OP level >= 2.",

@@ -13,6 +13,8 @@
     "figura.docs.silly.get_avatar_nameplate": "Renvoie les nameplates de l'avatar d'un autre.",
     "figura.docs.silly.cat": "Envoie miaou dans le tchat, parce que la moitié des utilisateurs de figura sont des chats déguisés.",
     "figura.docs.silly.get_bumpscocity": "Récupère la bosselosité actuelle.",
+    "figura.docs.silly.get_ping": "Renvoie le ping actuel du serveur.",
+    "figura.docs.silly.get_server_data": "Renvoie une partie des données du serveur actuel sous forme de tableau.",
     "figura.docs.silly.what_does_bumpscocity_do": "Explique ce que la bosselosité fait.",
     "figura.docs.silly.set_block": "Place un faux bloc dans le monde.\nDéfinir un bloc comme nil retire le faux bloc.\nNécessite que la triche soit activée (mais tourne sur les clients !)",
     "figura.docs.silly.get_block_entity": "Récupère les données NBT côté serveur d'un bloc dans le monde.\nRenvoie nil si le bloc n'est pas un block entity.\nNécessite le niveau d'opérateur >= 2.",
